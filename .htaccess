@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /MATERI_PAK-USMAN/uas_vending_machine/
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^/]+)$ $1.php [L]
+
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.php[\s?] [NC]
+RewriteRule ^ %1 [R=301,L]
