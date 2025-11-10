@@ -46,12 +46,22 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
-
+<div class="container">
+    <div class="shadow p-3 mb-5 bg-white rounded pt-4">
+        <div class="card-body" style="width: auto;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h6 class="text-center">welcome to admin</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="d-flex justify-content-center mt-5">
     <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div class="card" style="width: 70rem">
             <div class="card-header" style="background-color: #3fc1d8ff ;">
-                <h5 style="color:white;">ruangan</h5>
+                <h5 style="color:white;">admin</h5>
             </div>
 
             <div class="card-header">
