@@ -19,7 +19,7 @@ if (isset($_POST['delete'])) {
         ";
     }
 }
-
+ 
 
 $mesin = mysqli_query($conn, "SELECT * FROM mesin");
 if (!$mesin) die("Query mesin gagal: " . mysqli_error($conn));

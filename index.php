@@ -34,6 +34,7 @@ if (isset($_SESSION['admin'])) {
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  
 
   <!-- =======================================================
   * Template Name: Selecao
@@ -52,7 +53,7 @@ if (isset($_SESSION['admin'])) {
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">RIFASTECH</h1>
+        <h1 class="sitename">RIFASTECH</h1>x
       </a>
 
       <nav id="navmenu" class="navmenu">

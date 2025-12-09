@@ -120,102 +120,176 @@ if (isset($_POST['buy'])) {
     <title>Vending Machine Multi-Mesin & Laporan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="assets/css/ai.css" rel="stylesheet">
 </head>
 
 <body class="bg-light text-dark py-5">
-<div class="container bg-white shadow-lg rounded-4 p-4" style="max-width: 1000px;">
-
-    <!-- PILIH MESIN -->
-    <form method="GET" class="mb-4 text-center">
-        <label for="mesin" class="fw-semibold me-2">Pilih Mesin:</label>
-        <select name="mesin_id" id="mesin" class="form-select w-auto d-inline-block" onchange="this.form.submit()">
-            <?php foreach ($mesins as $mesin): ?>
-                <option value="<?= $mesin['id'] ?>" <?= $mesin['id'] == $selected_mesin_id ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($mesin['nama']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </form>
-
-    <div class="row g-4">
-        <!-- PRODUK -->
-        <div class="col-md-8 border-end">
-            <div class="text-center mb-4">
-                <h2 class="fw-bold text-primary mb-0">Mesin: <?= htmlspecialchars($mesins[array_search($selected_mesin_id, array_column($mesins, 'id'))]['nama']) ?></h2>
-                <p class="text-muted">Pilih produk favoritmu</p>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <div class="d-flex justify-content-center">
+                    <dotlottie-wc
+                        src="https://lottie.host/9b0e8da6-6240-434a-9c3d-9a196ede5cc0/AVrdUdRtsV.lottie"
+                        style="width: 270px;height: 270px;"
+                        autoplay
+                        loop></dotlottie-wc>
+                </div>
+                <h2 class="text-info fw-bold custom-font">Tanya training center AI</h2>
+                <div class="mt-4">
+                    <strong>
+                        Punya pertanyaan tentang Training center? <b class="text-info">Tanyakan langsung</b><br>
+                        ke asisten AI kami
+                    </strong>
+                </div>
+                <p class="mt-3">Atau tanyakan ke <b>WhatsApp </b>pintar kami</p>
+                <a href="https://wa.me/628132024295?text=Halo%20Takumi%20training%20center"
+                    class="btn btn-success btn-lg rounded-pill px-2 py-2 shadow-lg d-inline-flex align-items-center gap-3 text-white text-decoration-none"
+                    style="font-size: 20px; font-weight: 600; background: linear-gradient(135deg, #258dd3ff, #00b7ffff); border: none;"
+                    target="_blank">
+                    <!-- Ikon WhatsApp -->
+                    <i class="fa-brands fa-whatsapp ms-2" style="color: #ffffff;"></i>
+                    <!-- Teks utama -->
+                    <div class="text-start">
+                        <small class="opacity-90 me-2">Online 24 Jam • Balas Otomatis</small>
+                    </div>
+                </a>
+                <div class="container mt-3">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="d-flex align-items-center justify-content-center text-white rounded-3 bg-info bg-gradient" style="width:40px; height:40px;">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="fw-small fs-5">Respons real-time dengan akurat</div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="d-flex align-items-center justify-content-center text-white rounded-3 bg-danger bg-gradient" style="width:40px; height:40px;">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="fw-medium fs-5">Materi pelatihan lengkap dan terupdate</div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="d-flex align-items-center justify-content-center text-white rounded-3 bg-success bg-gradient" style="width:40px; height:40px;">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="fw-medium fs-5">Pelatihan interaktif dengan feedback instan</div>
+                    </div>
+                </div>
             </div>
-            <div class="row g-3">
-                <?php if (!empty($produk_tersedia)): ?>
-                    <?php foreach ($produk_tersedia as $p): ?>
-                        <div class="col-6">
-                            <div class="card border-0 shadow-sm h-100">
-                                <img src="<?= htmlspecialchars($p['gambar']) ?>" class="card-img-top rounded-top" style="height:150px;object-fit:cover;" alt="<?= htmlspecialchars($p['nama_produk']) ?>">
-                                <div class="card-body text-center">
-                                    <h6 class="fw-semibold text-primary mb-1"><?= htmlspecialchars($p['nama_produk']) ?></h6>
-                                    <p class="small text-secondary mb-1">Kode: <strong><?= htmlspecialchars($p['code']) ?></strong></p>
-                                    <p class="mb-0 text-dark fw-bold">Rp <?= number_format($p['harga_produk'], 0, ',', '.') ?></p>
-                                    <?php if ($p['stock'] > 0): ?>
-                                        <p class="small text-secondary mb-1">Stock: <strong><?= htmlspecialchars($p['stock']) ?></strong></p>
-                                    <?php else: ?>
-                                        <p class="small text-danger fw-bold mb-1">Stock Habis</p>
-                                    <?php endif; ?>
+            <div class="col-lg-7 mt-lg-0 mt-4">
+                <div class="body_ai">
+                    <div id="chat-wrapper">
+
+                        <!-- HEADER -->
+                        <div id="chat-header">
+                            <i class="fa-solid fa-robot"></i>
+                            Takumi Training Center AI Assistant
+                        </div>
+
+                        <!-- CHAT CONTAINER -->
+                        <div id="chat-container">
+
+                            <!-- CHAT BOX -->
+                            <div id="chat-box"></div>
+
+                            <!-- QUICK BUTTONS -->
+                            <div id="popular-container">
+                                <div class="popular-item" onclick="sendQuick('Apa saja program pelatihan yang tersedia?')">
+                                    <span class="popular-icon">📚</span> Program Pelatihan
+                                </div>
+                                <div class="popular-item" onclick="sendQuick('Bagaimana cara mendaftar?')">
+                                    <span class="popular-icon">📝</span> Cara Daftar
+                                </div>
+                                <div class="popular-item" onclick="sendQuick('Berapa biaya?')">
+                                    <span class="popular-icon">💰</span> Biaya
+                                </div>
+                                <div class="popular-item" onclick="sendQuick('Kapan jadwal pelatihan terbaru?')">
+                                    <span class="popular-icon">📅</span> Jadwal
                                 </div>
                             </div>
+
+                            <!-- INPUT -->
+                            <div id="input-container">
+                                <input type="text" id="user-input" placeholder="Tanyakan sesuatu...">
+                                <button id="send-btn">Kirim</button>
+                            </div>
+
                         </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="text-center text-muted">Belum ada produk di mesin ini</div>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <!-- PANEL KONTROL -->
-        <div class="col-md-4 d-flex flex-column justify-content-between">
-            <div class="bg-primary bg-opacity-10 border border-primary rounded-3 text-center p-3 mb-3">
-                <?= $message ?: '<div class="text-primary fw-semibold">Masukkan kode produk (contoh: A1)</div>' ?>
-            </div>
-
-            <form action="?mesin_id=<?= $selected_mesin_id ?>" method="POST" class="mb-4">
-                <div class="input-group">
-                    <input type="text" name="code" class="form-control text-center border-primary" maxlength="2" placeholder="Kode..." required>
-                    <button type="submit" name="buy" class="btn btn-primary fw-bold">Beli</button>
-                </div>
-            </form>
-
-            <div class="text-center">
-                <div class="row g-2">
-                    <?php foreach (["A", "B", "C", "1", "2", "3"] as $btn): ?>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-outline-primary w-100 fw-bold py-2"><?= $btn ?></button>
-                        </div>
-                    <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container bg-white shadow-lg rounded-4 p-4" style="max-width: 1000px;">
 
-    
+        <!-- PILIH MESIN -->
+        <form method="GET" class="mb-4 text-center">
+            <label for="mesin" class="fw-semibold me-2">Pilih Mesin:</label>
+            <select name="mesin_id" id="mesin" class="form-select w-auto d-inline-block" onchange="this.form.submit()">
+                <?php foreach ($mesins as $mesin): ?>
+                    <option value="<?= $mesin['id'] ?>" <?= $mesin['id'] == $selected_mesin_id ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($mesin['nama']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </form>
 
-</div>
+        <div class="row g-4">
+            <!-- PRODUK -->
+            <div class="col-md-8 border-end">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-primary mb-0">Mesin: <?= htmlspecialchars($mesins[array_search($selected_mesin_id, array_column($mesins, 'id'))]['nama']) ?></h2>
+                    <p class="text-muted">Pilih produk favoritmu</p>
+                </div>
+                <div class="row g-3">
+                    <?php if (!empty($produk_tersedia)): ?>
+                        <?php foreach ($produk_tersedia as $p): ?>
+                            <div class="col-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <img src="<?= htmlspecialchars($p['gambar']) ?>" class="card-img-top rounded-top" style="height:150px;object-fit:cover;" alt="<?= htmlspecialchars($p['nama_produk']) ?>">
+                                    <div class="card-body text-center">
+                                        <h6 class="fw-semibold text-primary mb-1"><?= htmlspecialchars($p['nama_produk']) ?></h6>
+                                        <p class="small text-secondary mb-1">Kode: <strong><?= htmlspecialchars($p['code']) ?></strong></p>
+                                        <p class="mb-0 text-dark fw-bold">Rp <?= number_format($p['harga_produk'], 0, ',', '.') ?></p>
+                                        <?php if ($p['stock'] > 0): ?>
+                                            <p class="small text-secondary mb-1">Stock: <strong><?= htmlspecialchars($p['stock']) ?></strong></p>
+                                        <?php else: ?>
+                                            <p class="small text-danger fw-bold mb-1">Stock Habis</p>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="text-center text-muted">Belum ada produk di mesin ini</div>
+                    <?php endif; ?>
+                </div>
+            </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".btn-outline-primary");
-    const input = document.querySelector("input[name='code']");
-    
-    buttons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const value = btn.textContent.trim();
+            <!-- PANEL KONTROL -->
+            <div class="col-md-4 d-flex flex-column justify-content-between">
+                <div class="bg-primary bg-opacity-10 border border-primary rounded-3 text-center p-3 mb-3">
+                    <?= $message ?: '<div class="text-primary fw-semibold">Masukkan kode produk (contoh: A1)</div>' ?>
+                </div>
 
-            if (/[A-Z]/.test(value)) {
-                input.value = value;
-            } else if (/[0-9]/.test(value) && input.value.length === 1) {
-                input.value += value;
-            }
-        });
-    });
-});
-</script>
+                <form action="?mesin_id=<?= $selected_mesin_id ?>" method="POST" class="mb-4">
+                    <div class="input-group">
+                        <input type="text" name="code" class="form-control text-center border-primary" maxlength="2" placeholder="Kode..." required>
+                        <button type="submit" name="buy" class="btn btn-primary fw-bold">Beli</button>
+                    </div>
+                </form>
 
+                <div class="text-center">
+                    <div class="row g-2">
+                        <?php foreach (["A", "B", "C", "1", "2", "3"] as $btn): ?>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-outline-primary w-100 fw-bold py-2"><?= $btn ?></button>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets\js\chat.js"></script>
 </body>
+
 </html>

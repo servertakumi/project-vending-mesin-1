@@ -1,0 +1,272 @@
+/* HEADER KOTAK BIRU GRADIENT */
+.machine-header {
+    background: linear-gradient(135deg, #007bff, #1da1f2);
+    padding: 18px;
+    border-radius: 16px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* DROPDOWN MODERN */
+.select-modern {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #0b6fcc;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.select-modern:hover {
+    background: rgba(255,255,255,0.95);
+}
+
+.select-modern:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.35);
+}
+
+.select-modern option {
+    font-weight: 600;
+    color: #0b6fcc;
+}
+
+    .vending-wrapper {
+        background: #f8fcff;
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+    }
+
+    /* GRADIENT HEADER */
+    .gradient-header {
+        background: linear-gradient(135deg, #007bff, #1da1f2);
+        color: white;
+        border-radius: 18px;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    /* CARD PRODUK */
+    .product-card {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        transition: 0.25s ease-in-out;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    /* PANEL KONTROL */
+    .control-box {
+        background: #f4f9ff;
+        border: 1.5px solid #d6e9ff;
+        border-radius: 20px;
+        padding: 18px;
+        font-weight: 600;
+        color: #0b6fcc;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    }
+
+    /* INPUT */
+    .form-control {
+        border-radius: 12px !important;
+        height: 45px;
+        text-align: center;
+        border: 1.5px solid #b4d9ff;
+    }
+
+    /* TOMBOL BELI */
+    .btn-info {
+        background: linear-gradient(135deg, #007bff, #1da1f2);
+        border: none;
+        padding: 10px 18px;
+        border-radius: 12px;
+        font-weight: bold;
+        color: white;
+    }
+    .btn-info:hover {
+        opacity: 0.9;
+    }
+
+    /* TOMBOL KEYBOARD */
+    .btn-keypad {
+        border-radius: 14px !important;
+        font-size: 18px;
+        padding: 10px 0;
+        border: 1.5px solid #1da1f2;
+        background: white;
+        transition: 0.2s;
+    }
+    .btn-keypad:hover {
+        background: #e6f3ff;
+    }
+    /* ===============================
+   WRAPPER LAYOUT
+=============================== */
+.vending-wrapper {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ===============================
+   GRID PRODUK RAPIIII
+=============================== */
+.product-grid .col-6,
+.product-grid .col-md-4 {
+    display: flex;
+}
+
+.product-card {
+    width: 100%;
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    border: none;
+    transition: 0.2s;
+    background: white;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+/* ===============================
+   GAMBAR PRODUK
+=============================== */
+.product-img {
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ===============================
+   PANEL KANAN
+=============================== */
+.control-panel {
+    padding-left: 20px;
+}
+
+.control-box {
+    background: #e8f4ff;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+/* ===============================
+   SELECT MESIN
+=============================== */
+.select-modern {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: white;
+}
+
+/* ===============================
+   KEYPAD BUTTON
+=============================== */
+.btn-keypad {
+    background: #e9f2ff;
+    border: none;
+    padding: 12px 0;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.btn-keypad:hover {
+    background: #d5e7ff;
+}
+
+/* ===============================
+   FIX SUPAYA TIDAK MEMANJANG
+=============================== */
+.product-area {
+    max-height: 620px;
+    overflow-y: auto;
+    padding-right: 12px;
+}
+
+.product-area::-webkit-scrollbar {
+    width: 7px;
+}
+
+.product-area::-webkit-scrollbar-thumb {
+    background: #bcd6f7;
+    border-radius: 10px;
+}
+/* Panel kanan */
+.control-panel {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* FORM BELI SELALU DI ATAS */
+.sticky-buy-box {
+    position: sticky;
+    top: 0;
+    background: transparent;
+    padding-bottom: 10px;
+    z-index: 100;
+}
+
+/* Wrapper keypad agar turun ke bawah */
+.keypad-wrapper {
+    margin-top: auto;
+}
+.control-panel {
+    padding-left: 10px;
+}
+
+/* Box info dan buy box */
+.control-box,
+.sticky-buy-box,
+.keypad-wrapper {
+    background: #f8faff;
+    border: 1px solid #dbe7ff;
+    border-radius: 12px;
+}
+
+/* Input Kode */
+#productCode {
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+
+/* Tombol keypad */
+.btn-keypad {
+    background: linear-gradient(145deg, #e2e8ff, #c7d4ff);
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    transition: 0.15s;
+}
+
+.btn-keypad:active {
+    transform: scale(0.9);
+    background: #b8c7ff;
+}
+
+/* Tombol beli */
+.btn-info {
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+/* Tombol hapus */
+#clearBtn {
+    border-radius: 8px;
+}
+
+

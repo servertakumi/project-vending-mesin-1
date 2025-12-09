@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /MATERI_PAK-USMAN/uas_mesin/
+RewriteBase /uas_mesin/
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f

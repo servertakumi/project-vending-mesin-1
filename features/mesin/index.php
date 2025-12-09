@@ -122,18 +122,22 @@ if (isset($_POST['cari'])) {
                                         <span class=""><?= $m['jumlah_roll']; ?></span>
                                     </td>
                                     <td>
-                                    <a href="app?page=mesin&view=edit&id=<?= $m['id'] ?>"
-                                        class="btn btn-warning btn-sm"><i
-                                            class="fa-regular fa-pen-to-square"></i>edit
-                                    </a>
+                                        <a href="app?page=mesin&view=display&id=<?= $m['id'] ?>"
+                                            class="btn btn-info btn-sm"><i
+                                                class="fa-regular fa-pen-to-square"></i>Display
+                                        </a>
+                                        <a href="app?page=mesin&view=edit&id=<?= $m['id'] ?>"
+                                            class="btn btn-warning btn-sm"><i
+                                                class="fa-regular fa-pen-to-square"></i>edit
+                                        </a>
 
-                                    <form action="" method="post" style="display: inline;"
-                                        onsubmit="return confirm('anda akan menghapus data mesin?')">
-                                        <input type="hidden" name="id" value="<?= $m['id'] ?>">
-                                        <button class="btn btn-danger btn-sm ms-2" type="submit" name="delete"><i
-                                                class="fa-solid fa-trash-can"></i>Hapus</button>
-                                    </form>
-                                </td>
+                                        <form action="" method="post" style="display: inline;"
+                                            onsubmit="return confirm('anda akan menghapus data mesin?')">
+                                            <input type="hidden" name="id" value="<?= $m['id'] ?>">
+                                            <button class="btn btn-danger btn-sm ms-2" type="submit" name="delete"><i
+                                                    class="fa-solid fa-trash-can"></i>Hapus</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
