@@ -163,8 +163,7 @@ $mesin_tidak_laris = end($mesin_data) ?? null;
                                             <img src="assets/images/curved-images/curved1.jpg" style="width: 80px; height: 80px;" class="rounded float-start p-2 shadow mb-0 bg-body-tertiary rounded" alt="...">
                                         </div>
                                         <div class="col-md-11 mt-3">
-                                            <strong>TAKUMI VM</strong>
-                                            <p>Takumi vending mechine</p>
+                                           
                                         </div>
                                     </div>
                                 </div>
